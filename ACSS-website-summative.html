@@ -65,7 +65,6 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 80px;
-            gap: 40px;
         }
 
         .hero-content h1 {
@@ -104,6 +103,14 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border: 2px solid #a78bfa;
         }
 
         .squares {
@@ -129,38 +136,6 @@
             height: 4px;
             background-color: #94a3b8;
             border-radius: 50%;
-        }
-
-        /* About Section with Photo */
-        .about-section {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 40px;
-            margin-bottom: 80px;
-            align-items: center;
-        }
-
-        .profile-photo {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border: 2px solid #a78bfa;
-            filter: grayscale(20%);
-        }
-
-        .about-content h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .about-content h2::before {
-            content: '#';
-            color: #a78bfa;
-        }
-
-        .about-content p {
-            margin-bottom: 15px;
-            line-height: 1.8;
         }
 
         /* Quote Section */
@@ -239,19 +214,13 @@
         .project-card {
             border: 1px solid #475569;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #a78bfa;
         }
 
         .project-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background-color: #334155;
+            background-color: #000;
         }
 
         .project-info {
@@ -286,12 +255,48 @@
             font-family: 'Courier New', monospace;
             font-size: 12px;
             transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .live-btn:hover {
             background-color: #a78bfa;
             border-color: #a78bfa;
             color: #1e293b;
+        }
+
+        /* About Me Section */
+        .about-section {
+            margin-bottom: 80px;
+        }
+
+        .about-header {
+            margin-bottom: 40px;
+        }
+
+        .about-header h2 {
+            font-size: 32px;
+        }
+
+        .about-header h2::before {
+            content: '#';
+            color: #a78bfa;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
         }
 
         /* Footer */
@@ -347,22 +352,27 @@
                 text-align: center;
             }
 
-            .about-section {
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .about-content {
+                flex-direction: column;
             }
 
             nav {
                 flex-wrap: wrap;
             }
+
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="https://github.com" class="github-icon" target="_blank">
+    <a href="https://github.com/AverageJJonak" class="github-icon" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
@@ -380,7 +390,7 @@
             </nav>
         </header>
 
-        <section class="hero">
+        <section class="hero" id="home">
             <div class="hero-content">
                 <h1>
                     Declan is a <span class="highlight">web<br>designer</span> and <span class="highlight">front-end<br>developer</span>
@@ -392,12 +402,7 @@
                 <button class="contact-btn">Contact me!!</button>
             </div>
             <div class="hero-graphic">
-                <div class="squares">
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                </div>
+                <img src="your-photo.jpg" alt="Declan" class="profile-photo">
                 <div class="dots-grid">
                     <div class="dot"></div>
                     <div class="dot"></div>
@@ -419,21 +424,6 @@
             </div>
         </section>
 
-        <section class="about-section" id="about-me">
-            <img src="your-photo.jpg" alt="Declan snowboarding" class="profile-photo">
-            <div class="about-content">
-                <h2>about-me</h2>
-                <p>
-                    Hello! I'm Declan, a passionate web designer and front-end developer based in Hong Kong. 
-                    I love creating beautiful, functional websites and applications that make a difference.
-                </p>
-                <p>
-                    When I'm not coding, you can find me snowboarding on the slopes or exploring new technologies. 
-                    I'm always eager to learn and take on new challenges!
-                </p>
-            </div>
-        </section>
-
         <section class="quote-section">
             <p class="quote-text">
                 Everybody should learn to program a computer, because it teaches you how to think.
@@ -451,34 +441,44 @@
 
             <div class="projects-grid">
                 <div class="project-card">
-                     <img src="knucklebones.png" alt="Knucklebones" class="project-image">
-                    <div class="project-info">
+                    <img src="knucklebones.png" alt="Knucklebones" class="project-image">
                     <div class="project-info">
                         <div class="project-tech">Xcode</div>
                         <h3 class="project-title">Knucklebones</h3>
                         <p class="project-description">Fun and simple board game</p>
+                        <a href="#" class="live-btn">Live ⟷</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="Chess-ai.png" alt="Chess AI" class="project-image">
+                    <div class="project-info">
+                        <div class="project-tech">Python</div>
+                        <h3 class="project-title">Chess ai</h3>
+                        <p class="project-description">Custom made chess ai in python</p>
                         <a href="https://github.com/AverageJJonak/Chess-ai-python" class="live-btn" target="_blank">Live ⟷</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=400&h=300&fit=crop" alt="Chess AI" class="project-image">
-                    <div class="project-info">
-                        <div class="project-tech">Python</div>
-                        <h3 class="project-title">Chess ai</h3>
-                        <p class="project-description">Custom made chess ai in python</p>
-                        <button class="live-btn">Live ⟷</button>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=400&h=300&fit=crop" alt="Kahoot Answers" class="project-image">
+                    <img src="kahoot.png" alt="Kahoot Answers" class="project-image">
                     <div class="project-info">
                         <div class="project-tech">CSS</div>
                         <h3 class="project-title">Kahoot Answers Viewer</h3>
                         <p class="project-description">Get answers to your kahoot quiz</p>
-                        <button class="live-btn">Live ⟷</button>
+                        <a href="#" class="live-btn">Live ⟷</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about-me">
+            <div class="about-header">
+                <h2>about-me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a student at HKIS who intends to study both business and computer science in college! I am very passionate about creating videogames and I plan to start my own studio in college. If you're a videogame developer eager to create a project, please contact me!</p>
                 </div>
             </div>
         </section>
@@ -488,12 +488,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
-                AverageJJonak
+                GitHub
             </a>
-            <a href="#">📍 Hong Kong</a>
-            <a href="mailto:declanssng@gmail.com">✉ declanssng@gmail.com</a>
-            <a href="#">💼 Declan Ng</a>
-            <a href="tel:+85212345678">☎ +852 123 456 789</a>
+            <a href="tel:+852-96960070" target="_blank">Whatsapp📱</a>
+            <a href="mailto:declanssng@gmail.com">Email📧</a>
         </footer>
     </div>
 </body>
